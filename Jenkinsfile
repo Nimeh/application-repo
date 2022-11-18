@@ -34,5 +34,25 @@ pipeline {
                 }
             }
         }
+
+        stage('Clone the Argo Manifest') {
+            steps {
+                script{
+                    sh 'git clone git@github.com:Nimeh/argo-manifests.git'
+                    }
+                }
+            }
+        
+
+
+        stage('Update the image in yaml manifest/values file') {
+            steps {
+                script{
+                    sh "sed -i 's#image: *#image: nginx'"
+                    }
+                }
+            }
+        
+
     }
 }
