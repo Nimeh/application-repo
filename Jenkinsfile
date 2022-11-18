@@ -48,7 +48,7 @@ pipeline {
         stage('Update the image in yaml manifest/values file') {
             steps {
                 script{
-                    sh "cd argo-manifests && sed -i 's#image: *#image: nginx'"
+                    sh "sed -re 's#image.*#image: nginx#g' deployment.yaml"
                     }
                 }
             }
