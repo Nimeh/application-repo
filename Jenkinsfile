@@ -48,11 +48,22 @@ pipeline {
         stage('Update the image in yaml manifest/values file') {
             steps {
                 script{
-                    sh "cd argo-manifests && sed -re 's#image.*#image: nginx#g' deployment.yaml"
+                    sh "cd argo-manifests"
+                    sh "git checkout develop"
+                    sh "sed -i 's#image.*#image: nginx#g' deployment.yaml"
+                    sh "git add ."
+                    sh "git commit -m 'changs'"
+                    sh "git push"
                     }
                 }
             }
-        
 
+        stage('Raise A PR to Argo Repo') {
+            steps {
+                script{
+                    sh "gh pr crate --base develop --title 'The bug is fixed' --body 'Everything works again'"
+                    }
+                }
+            }      
     }
 }
