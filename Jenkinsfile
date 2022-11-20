@@ -61,7 +61,7 @@ pipeline {
         stage('Raise A PR to Argo Repo') {
             steps {
                 script{
-                    sh "cd argo-mainfest && gh pr create --title 'The bug is fixed' --body 'Everything works again'"
+                    sh "cd argo-manifests && gh pr create --title 'The bug is fixed' --body 'Everything works again'"
                     }
                 }
             }      
