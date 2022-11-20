@@ -15,7 +15,7 @@ pipeline {
         stage('Build') { 
             steps { 
                 script{
-                 app = docker.build("test")
+                 app = docker.build("test:${env.BUILD_ID}")
                 }
             }
         }
