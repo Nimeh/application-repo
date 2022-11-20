@@ -50,7 +50,7 @@ pipeline {
                 script{
                     sh "cd argo-manifests"
                     sh "cd argo-manifests && git checkout develop"
-                    sh "cd argo-manifests && sed -i 's#image.*#image: nginx#g' deployment.yaml"
+                    sh "cd argo-manifests && sed -i '' 's#image.*#image: nginx#g' deployment.yaml"
                     sh "cd argo-manifests && git add ."
                     sh "cd argo-manifests && git commit -m 'changs'"
                     sh "cd argo-manifests && git push"
