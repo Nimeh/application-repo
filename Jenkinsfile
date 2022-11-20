@@ -38,7 +38,7 @@ pipeline {
         stage('Clone the Argo Manifest') {
             steps {
                 script{
-                    sh 'git clone git@github.com:Nimeh/argo-manifests.git'
+                    sh 'git clone --branch develop git@github.com:Nimeh/argo-manifests.git'
                     }
                 }
             }
